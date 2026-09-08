@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const express = require('express');
 
@@ -13,6 +14,16 @@ const NOTIFY_TO = (process.env.NOTIFY_TO || 'emilian@expand.health')
 // Must be an address on a domain verified in the Resend account.
 const FROM_EMAIL = process.env.FROM_EMAIL || 'The Forum <noreply@expand.health>';
 const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+
+// Applications are appended here as one JSON object per line. DATA_DIR is a Railway volume,
+// so the file survives redeploys. Without a volume this falls back to the container disk and
+// is wiped on every deploy.
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
+const DATA_FILE = path.join(DATA_DIR, 'registrations.jsonl');
+// Set ADMIN_KEY to read the list back over HTTP. Without it the endpoint stays closed.
+const ADMIN_KEY = process.env.ADMIN_KEY || '';
+
+fs.mkdirSync(DATA_DIR, { recursive: true });
 
 app.set('trust proxy', 1);
 app.use(express.json({ limit: '16kb' }));
@@ -56,6 +67,12 @@ app.post('/api/register', async (req, res) => {
 
   // Plain text on purpose. Railway parses a JSON log line into attributes and shows a blank
   // message, which loses the submission in the log view.
+  const record = { name, email, firm, role, at: new Date().toISOString() };
+  try {
+    fs.appendFileSync(DATA_FILE, JSON.stringify(record) + '\n');
+  } catch (err) {
+    console.error('could not write registration', err.message);
+  }
   console.log('REGISTRATION | ' + [name, email, firm || '-', role || '-'].join(' | '));
 
   if (!RESEND_API_KEY) {
@@ -99,8 +116,43 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
+// The stored list, newest first. Needs ?key= matching ADMIN_KEY.
+app.get('/api/registrations', (req, res) => {
+  if (!ADMIN_KEY || req.query.key !== ADMIN_KEY) return res.status(404).end();
+  let rows = [];
+  try {
+    rows = fs.readFileSync(DATA_FILE, 'utf8')
+      .split('\n')
+      .filter(Boolean)
+      .map((line) => { try { return JSON.parse(line); } catch (e) { return null; } })
+      .filter(Boolean)
+      .reverse();
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err;
+  }
+  if (req.query.format === 'csv') {
+    const esc = (v) => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+    res.type('text/csv').send(
+      ['at,name,email,firm,role']
+        .concat(rows.map((r) => [r.at, r.name, r.email, r.firm, r.role].map(esc).join(',')))
+        .join('\n')
+    );
+    return;
+  }
+  res.json({ ok: true, count: rows.length, registrations: rows });
+});
+
 app.get('/api/health', (req, res) => {
-  res.json({ ok: true, resendConfigured: Boolean(RESEND_API_KEY), notifyTo: NOTIFY_TO.length });
+  let stored = 0;
+  try {
+    stored = fs.readFileSync(DATA_FILE, 'utf8').split('\n').filter(Boolean).length;
+  } catch (err) { /* no file yet */ }
+  res.json({
+    ok: true,
+    resendConfigured: Boolean(RESEND_API_KEY),
+    notifyTo: NOTIFY_TO.length,
+    stored
+  });
 });
 
 app.listen(PORT, () => console.log('The Forum listening on ' + PORT));

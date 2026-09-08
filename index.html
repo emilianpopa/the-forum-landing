@@ -392,26 +392,9 @@
 
 <script>
   (function () {
-    // Fallback only, used if the registration endpoint is unavailable.
-    var CONTACT_EMAIL = 'emilian@expand.health';
-
     var form = document.getElementById('reg');
     var btn = document.getElementById('f-btn');
     var msg = document.getElementById('f-msg');
-
-    function mailtoFallback(data) {
-      var lines = [
-        'Name: ' + data.name,
-        'Email: ' + data.email,
-        'Firm: ' + (data.firm || '-'),
-        'Role: ' + data.role
-      ].join('\n');
-      window.location.href = 'mailto:' + CONTACT_EMAIL +
-        '?subject=' + encodeURIComponent('The Forum, application from ' + data.name) +
-        '&body=' + encodeURIComponent(lines);
-      msg.className = 'msg done';
-      msg.textContent = 'Your email client will open. Send the message to complete your application.';
-    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -437,12 +420,8 @@
       }).then(function (res) {
         btn.disabled = false;
         if (!res.ok || !res.body.ok) {
-          if (res.body && res.body.error && String(res.body.error).indexOf('name') > -1) {
-            msg.className = 'msg';
-            msg.textContent = res.body.error;
-            return;
-          }
-          mailtoFallback(data);
+          msg.className = 'msg';
+          msg.textContent = (res.body && res.body.error) || 'Something went wrong. Please try again.';
           return;
         }
         form.reset();
@@ -450,7 +429,8 @@
         msg.textContent = 'Thank you. We will be in touch.';
       }).catch(function () {
         btn.disabled = false;
-        mailtoFallback(data);
+        msg.className = 'msg';
+        msg.textContent = 'Could not reach the server. Please try again in a moment.';
       });
     });
   })();

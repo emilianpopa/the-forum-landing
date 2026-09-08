@@ -54,7 +54,9 @@ app.post('/api/register', async (req, res) => {
     return res.status(429).json({ ok: false, error: 'Too many submissions. Try again shortly.' });
   }
 
-  console.log(JSON.stringify({ event: 'registration', name, email, firm, role, at: new Date().toISOString() }));
+  // Plain text on purpose. Railway parses a JSON log line into attributes and shows a blank
+  // message, which loses the submission in the log view.
+  console.log('REGISTRATION | ' + [name, email, firm || '-', role || '-'].join(' | '));
 
   if (!RESEND_API_KEY) {
     console.warn('RESEND_API_KEY not set, registration logged but no email sent');

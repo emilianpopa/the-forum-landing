@@ -374,6 +374,7 @@
               <option>Prospective partner or sponsor</option>
             </select>
           </div>
+          <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <button type="submit" id="f-btn">Apply for an invitation</button>
           <div class="msg" id="f-msg" role="status" aria-live="polite"></div>
         </form>
@@ -391,31 +392,66 @@
 
 <script>
   (function () {
-    // Registrations are emailed to this address. Swap it for Julian's when he has one.
+    // Fallback only, used if the registration endpoint is unavailable.
     var CONTACT_EMAIL = 'emilian@expand.health';
 
     var form = document.getElementById('reg');
+    var btn = document.getElementById('f-btn');
     var msg = document.getElementById('f-msg');
+
+    function mailtoFallback(data) {
+      var lines = [
+        'Name: ' + data.name,
+        'Email: ' + data.email,
+        'Firm: ' + (data.firm || '-'),
+        'Role: ' + data.role
+      ].join('\n');
+      window.location.href = 'mailto:' + CONTACT_EMAIL +
+        '?subject=' + encodeURIComponent('The Forum, application from ' + data.name) +
+        '&body=' + encodeURIComponent(lines);
+      msg.className = 'msg done';
+      msg.textContent = 'Your email client will open. Send the message to complete your application.';
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      if (!name || !email) return;
+      var data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        firm: form.firm.value.trim(),
+        role: form.role.value,
+        website: form.website.value
+      };
+      if (!data.name || !data.email) return;
 
-      var lines = [
-        'Name: ' + name,
-        'Email: ' + email,
-        'Firm: ' + (form.firm.value.trim() || '-'),
-        'Role: ' + form.role.value
-      ].join('\n');
+      btn.disabled = true;
+      msg.className = 'msg';
+      msg.textContent = 'Sending...';
 
-      window.location.href = 'mailto:' + CONTACT_EMAIL +
-        '?subject=' + encodeURIComponent('The Forum, application from ' + name) +
-        '&body=' + encodeURIComponent(lines);
-
-      msg.className = 'msg done';
-      msg.textContent = 'Your email client will open. Send the message to complete your application.';
+      fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        return r.json().then(function (j) { return { ok: r.ok, body: j }; });
+      }).then(function (res) {
+        btn.disabled = false;
+        if (!res.ok || !res.body.ok) {
+          if (res.body && res.body.error && String(res.body.error).indexOf('name') > -1) {
+            msg.className = 'msg';
+            msg.textContent = res.body.error;
+            return;
+          }
+          mailtoFallback(data);
+          return;
+        }
+        form.reset();
+        msg.className = 'msg done';
+        msg.textContent = 'Thank you. We will be in touch.';
+      }).catch(function () {
+        btn.disabled = false;
+        mailtoFallback(data);
+      });
     });
   })();
 </script>

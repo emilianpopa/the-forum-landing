@@ -57,6 +57,7 @@ app.post('/api/register', async (req, res) => {
   const email = String(body.email || '').trim().slice(0, 160);
   const firm = String(body.firm || '').trim().slice(0, 160);
   const role = String(body.role || '').trim().slice(0, 120);
+  const why = String(body.why || '').trim().slice(0, 2000);
 
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ ok: false, error: 'Please add your name and a valid email address.' });
@@ -67,7 +68,7 @@ app.post('/api/register', async (req, res) => {
 
   // Plain text on purpose. Railway parses a JSON log line into attributes and shows a blank
   // message, which loses the submission in the log view.
-  const record = { name, email, firm, role, at: new Date().toISOString() };
+  const record = { name, email, firm, role, why, at: new Date().toISOString() };
   try {
     fs.appendFileSync(DATA_FILE, JSON.stringify(record) + '\n');
   } catch (err) {
@@ -85,7 +86,8 @@ app.post('/api/register', async (req, res) => {
     '<p><strong>Name</strong><br>' + escapeHtml(name) + '</p>',
     '<p><strong>Email</strong><br>' + escapeHtml(email) + '</p>',
     '<p><strong>Firm</strong><br>' + escapeHtml(firm || '-') + '</p>',
-    '<p><strong>You are</strong><br>' + escapeHtml(role || '-') + '</p>'
+    '<p><strong>You are</strong><br>' + escapeHtml(role || '-') + '</p>',
+    '<p><strong>Why this is for them</strong><br>' + escapeHtml(why || '-').replace(/\n/g, '<br>') + '</p>'
   ].join('');
 
   try {
@@ -133,8 +135,8 @@ app.get('/api/registrations', (req, res) => {
   if (req.query.format === 'csv') {
     const esc = (v) => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
     res.type('text/csv').send(
-      ['at,name,email,firm,role']
-        .concat(rows.map((r) => [r.at, r.name, r.email, r.firm, r.role].map(esc).join(',')))
+      ['at,name,email,firm,role,why']
+        .concat(rows.map((r) => [r.at, r.name, r.email, r.firm, r.role, r.why].map(esc).join(',')))
         .join('\n')
     );
     return;

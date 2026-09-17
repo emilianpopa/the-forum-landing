@@ -4,48 +4,48 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="The Forum, an invitation only longevity investor conference at a five star destination in the American mountains.">
+<meta name="description" content="The Forum, an invitation only longevity investor summit at the Aspen Club, Aspen, Colorado.">
 <title>The Forum &mdash; Longevity Investors</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap">
 <style>
   :root{
     --paper:#FCFBF7;
-    --paper-deep:#F4F1E7;
+    --paper-deep:#F3F1E8;
     --ink:#1B1A16;
-    --ink-soft:#6F6B60;
-    --rule:#E0D9C8;
-    --pine:#222C25;
+    --ink-soft:#6B6A5F;
+    --rule:#DDD9CA;
+    --pine:#1F2E26;
+    --pine-mid:#33473C;
+    --pine-line:#4A6355;
     --pine-ink:#EDEAE0;
-    --pine-soft:#A3AC9E;
-    --brass:#8C7748;
-    --serif:"Cormorant Garamond", "Times New Roman", serif;
-    --sans:"Jost", "Futura", "Century Gothic", sans-serif;
+    --pine-soft:#A9B4A8;
+    --serif:"Cormorant Garamond", "Garamond", "Times New Roman", serif;
     --gutter:clamp(20px,5vw,64px);
   }
   *{box-sizing:border-box}
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:var(--sans);
-    font-weight:300;
-    font-size:18px;
-    line-height:1.75;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:19.5px;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:1120px;margin:0 auto;padding:0 var(--gutter)}
-  p{margin:0 0 1.1em}
+  p{margin:0 0 1em}
   p:last-child{margin-bottom:0}
   a{color:inherit}
 
   .label{
-    font-family:var(--sans);
-    font-weight:400;
-    font-size:11px;
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:13.5px;
     letter-spacing:.2em;
     text-transform:uppercase;
-    color:var(--ink-soft);
+    color:var(--pine-mid);
   }
 
   /* ---------- masthead ---------- */
@@ -54,46 +54,51 @@
     display:flex;align-items:baseline;justify-content:space-between;
     gap:24px;padding-top:22px;padding-bottom:20px;flex-wrap:wrap;
   }
-  .mark{font-family:var(--serif);font-weight:400;font-size:23px;letter-spacing:.01em;line-height:1}
+  .mark{font-weight:500;font-size:24px;letter-spacing:.01em;line-height:1;color:var(--pine)}
   .mast .label{white-space:nowrap}
 
   /* ---------- hero ---------- */
-  .hero .wrap{padding-top:clamp(56px,10vw,120px);padding-bottom:clamp(40px,6vw,68px)}
+  .hero{position:relative;overflow:hidden}
+  .hero .wrap{position:relative;padding-top:clamp(64px,11vw,132px);padding-bottom:clamp(40px,6vw,68px)}
+  .ridge{
+    position:absolute;left:0;right:0;top:0;
+    width:100%;height:auto;
+    pointer-events:none;
+    color:var(--pine-line);
+  }
   .hero h1{
-    font-family:var(--serif);
+    position:relative;
     font-weight:300;
-    font-size:clamp(58px,12.5vw,168px);
+    font-size:clamp(60px,12.5vw,168px);
     line-height:.92;
     letter-spacing:-.01em;
     margin:0;
+    color:var(--pine);
     text-wrap:balance;
   }
   .hero .sub{
-    font-family:var(--serif);
-    font-size:clamp(20px,3.4vw,34px);
+    position:relative;
+    font-size:clamp(21px,3.4vw,34px);
     letter-spacing:.06em;
-    color:var(--ink-soft);
+    color:var(--pine-mid);
     margin-top:.35em;
   }
   .hero .lede{
-    max-width:34em;
+    position:relative;
+    max-width:32em;
     margin-top:clamp(28px,4vw,44px);
-    font-size:clamp(18px,2.2vw,21px);
-    line-height:1.62;
+    font-size:clamp(20px,2.3vw,24px);
+    line-height:1.5;
   }
-  .hero .lede em{font-family:var(--serif);font-style:normal;font-size:1.12em}
+  .hero .lede em{font-style:normal;font-weight:500;font-size:1.06em}
 
   /* ---------- facts strip ---------- */
   .facts{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper-deep)}
-  .facts .wrap{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:0;
-  }
+  .facts .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0}
   .fact{padding:22px 0 24px;border-right:1px solid var(--rule)}
   .fact:last-child{border-right:0}
   .fact:not(:first-child){padding-left:24px}
-  .fact .n{font-family:var(--serif);font-size:32px;line-height:1.1;display:block}
+  .fact .n{font-size:36px;font-weight:400;line-height:1.1;display:block;color:var(--pine)}
   .fact .t{display:block;margin-top:4px}
 
   /* ---------- section grid ---------- */
@@ -105,40 +110,40 @@
     padding-top:clamp(44px,6vw,76px);
     padding-bottom:clamp(44px,6vw,76px);
   }
-  .col-txt{max-width:38em}
+  .col-txt{max-width:36em}
   h2{
-    font-family:var(--serif);
-    font-weight:300;
-    font-size:clamp(30px,4.4vw,44px);
+    font-weight:400;
+    font-size:clamp(32px,4.4vw,46px);
     line-height:1.12;
     margin:0 0 .5em;
+    color:var(--pine);
     text-wrap:balance;
   }
-  .aside{padding-top:.7em}
+  .aside{padding-top:.9em}
 
   /* audience list */
   .aud{display:grid;gap:26px;margin-top:30px}
   .aud .row{display:grid;grid-template-columns:1.6em 1fr;gap:14px;align-items:start}
-  .aud .bul{font-family:var(--serif);color:var(--brass);font-size:21px;line-height:1.3}
-  .aud h3{font-family:var(--serif);font-weight:400;font-size:23px;line-height:1.3;margin:0 0 .25em}
+  .aud .bul{color:var(--pine-line);font-size:22px;line-height:1.3}
+  .aud h3{font-weight:500;font-size:24px;line-height:1.3;margin:0 0 .2em;color:var(--pine)}
 
   /* day shape */
   .day{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(24px,4vw,40px);margin-top:36px}
-  .day .slot{border-top:1px solid var(--ink);padding-top:14px}
-  .day .slot h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:.15em 0 .3em}
-  .day .slot p{font-size:16.5px;color:var(--ink-soft)}
+  .day .slot{border-top:1px solid var(--pine-line);padding-top:14px}
+  .day .slot h3{font-weight:500;font-size:23px;margin:.15em 0 .3em;color:var(--pine)}
+  .day .slot p{font-size:18px;color:var(--ink-soft)}
 
   .pull{
-    font-family:var(--serif);
-    font-size:clamp(24px,3.2vw,31px);
+    font-size:clamp(25px,3.2vw,32px);
     line-height:1.32;
     margin:34px 0 0;
     padding-left:22px;
-    border-left:1px solid var(--brass);
+    border-left:1px solid var(--pine-line);
+    color:var(--pine);
     text-wrap:balance;
   }
 
-  /* ---------- commercial (dark) ---------- */
+  /* ---------- the model (dark) ---------- */
   .commercial{background:var(--pine);color:var(--pine-ink)}
   .commercial .wrap{
     display:grid;
@@ -149,40 +154,42 @@
   }
   .commercial .label{color:var(--pine-soft)}
   .commercial h2{color:var(--pine-ink)}
+  .commercial .intro{color:var(--pine-soft);max-width:30em}
   .streams{display:grid;gap:0;margin-top:34px;border-top:1px solid rgba(237,234,224,.22)}
   .stream{
     display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(16px,3vw,36px);
     padding:22px 0;border-bottom:1px solid rgba(237,234,224,.22);
   }
-  .stream h3{font-family:var(--serif);font-weight:400;font-size:24px;margin:0;line-height:1.25}
-  .stream p{color:var(--pine-soft);font-size:16.5px}
-  .stream .fig{font-family:var(--serif);font-size:16px;color:var(--pine-ink);display:block;margin-top:.5em;letter-spacing:.02em}
+  .stream h3{font-weight:500;font-size:25px;margin:0;line-height:1.25}
+  .stream p{color:var(--pine-soft);font-size:18px}
+  .stream .fig{font-size:18px;font-weight:500;color:var(--pine-ink);display:block;margin-top:.4em;letter-spacing:.02em}
 
   /* ---------- register ---------- */
   .register .wrap{padding-top:clamp(52px,7vw,86px);padding-bottom:clamp(52px,7vw,86px)}
   .register h2{max-width:11em}
   .reg-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,72px);align-items:start}
-  .reg-note{max-width:26em;color:var(--ink-soft);font-size:16px}
+  .reg-note{max-width:26em;color:var(--ink-soft);font-size:18px}
   form{display:grid;gap:16px;max-width:26em;margin-top:6px}
   .field{display:grid;gap:6px}
-  input,select{
-    font-family:var(--sans);font-weight:300;font-size:16px;color:var(--ink);
+  input,select,textarea{
+    font-family:var(--serif);font-weight:400;font-size:18px;color:var(--ink);
     background:transparent;border:0;border-bottom:1px solid var(--rule);
     padding:9px 2px;border-radius:0;appearance:none;
   }
+  textarea{resize:vertical;min-height:4.5em;line-height:1.45}
   select{background-image:none}
-  input:focus,select:focus{outline:none;border-bottom-color:var(--ink)}
-  input:focus-visible,select:focus-visible{outline:1px solid var(--brass);outline-offset:3px}
+  input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--pine)}
+  input:focus-visible,select:focus-visible,textarea:focus-visible{outline:1px solid var(--pine-line);outline-offset:3px}
   button{
-    font-family:var(--sans);font-weight:400;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    background:var(--ink);color:var(--paper);border:0;padding:15px 26px;cursor:pointer;
+    font-family:var(--serif);font-weight:500;font-size:14px;letter-spacing:.18em;text-transform:uppercase;
+    background:var(--pine);color:var(--paper);border:0;padding:15px 26px;cursor:pointer;
     justify-self:start;margin-top:8px;transition:background .18s ease;
   }
-  button:hover{background:var(--pine)}
+  button:hover{background:var(--pine-mid)}
   button:disabled{opacity:.5;cursor:default}
-  button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
-  .msg{font-size:15px;color:var(--ink-soft);min-height:1.4em}
-  .msg.done{color:var(--brass)}
+  button:focus-visible{outline:2px solid var(--pine-line);outline-offset:3px}
+  .msg{font-size:17px;color:var(--ink-soft);min-height:1.4em}
+  .msg.done{color:var(--pine-mid)}
 
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--rule);background:var(--paper-deep)}
@@ -208,68 +215,75 @@
 <header class="mast">
   <div class="wrap">
     <span class="mark">The Forum</span>
-    <span class="label">Aspen &middot; Park City &middot; By invitation</span>
+    <span class="label">Aspen, USA &middot; By invitation</span>
   </div>
 </header>
 
 <div class="hero">
+  <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <!-- distant ridge -->
+    <polyline fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".28" stroke-linejoin="round"
+      points="0,300 90,268 160,282 240,236 310,252 380,212 440,228 520,184 590,204 650,176 720,196 790,158 850,182 930,150 1000,170 1070,138 1140,162 1220,130 1290,150 1370,124 1440,140"/>
+    <!-- near ridge -->
+    <polyline fill="none" stroke="currentColor" stroke-width="1.25" stroke-opacity=".5" stroke-linejoin="round"
+      points="0,372 70,356 130,362 190,332 250,346 320,306 370,322 430,284 480,300 540,262 600,282 660,246 720,266 780,224 830,240 900,206 960,226 1020,196 1080,214 1150,184 1210,200 1270,172 1330,188 1390,166 1440,176"/>
+  </svg>
   <div class="wrap">
     <h1>The Forum</h1>
     <div class="sub">Longevity Investors</div>
     <div class="lede">
-      <p><em>A standalone, ultra exclusive longevity investor conference at a 5 star destination in the American mountains.</em></p>
-      <p>Small by design: this is the room where deals actually happen, not a conference with an audience.</p>
+      <p><em>A standalone, ultra exclusive longevity investor forum at a 5 star destination in the Aspen mountains.</em></p>
+      <p>Hosted at the Aspen Club. Small by design: this is the room where deals actually happen, not a conference with an audience.</p>
     </div>
   </div>
 </div>
 
 <div class="facts">
   <div class="wrap">
-    <div class="fact"><span class="n">2&ndash;3</span><span class="label t">Days</span></div>
+    <div class="fact"><span class="n">3</span><span class="label t">Days</span></div>
     <div class="fact"><span class="n">50&ndash;60</span><span class="label t">Paying guests</span></div>
-    <div class="fact"><span class="n">30</span><span class="label t">Flown in speakers</span></div>
-    <div class="fact"><span class="n">5</span><span class="label t">Partners</span></div>
-    <div class="fact"><span class="n">1</span><span class="label t">Mountain hotel, taken over</span></div>
+    <div class="fact"><span class="n">30</span><span class="label t">Speakers</span></div>
+    <div class="fact"><span class="n">3</span><span class="label t">Exclusive sponsors</span></div>
+    <div class="fact"><span class="n">1</span><span class="label t">Hotel</span></div>
   </div>
 </div>
 
 <section class="body-sec">
   <div class="wrap">
-    <div class="aside"><span class="label">What it is</span></div>
+    <div class="aside"><span class="label">What</span></div>
     <div class="col-txt">
-      <h2>50 to 60 guests. 30 speakers. One hotel.</h2>
-      <p>2 to 3 days at one of the best hotels in the market, in Aspen, Park City or similar. Roughly 50 to 60 paying guests and around 30 flown in speakers. Every meal, session and evening is part of the programme.</p>
-      <p>This is the endpoint the other formats build toward: the investor summit that stands alone as ours. The Gstaad benchmark shows the model works, with tickets at around 6,500 CHF. We run it with professional curation, a stronger roster, speakers treated properly, and institutional backing.</p>
-      <p class="pull">High profile, high end. Quality over quantity.</p>
+      <h2>3 days at the best hotel in Aspen.</h2>
+      <p>50 to 60 paying guests and 30 speakers. Meals, sessions, activities and evenings are all part of the programme.</p>
+      <p>This is the summit that changes the game. We have seen the model work in Europe. Here it comes with a stronger roster and a better room: speakers, guests, investors and sponsors, the top of the top. This is the forum for longevity.</p>
     </div>
   </div>
 </section>
 
 <section class="body-sec">
   <div class="wrap">
-    <div class="aside"><span class="label">Who is in the room</span></div>
+    <div class="aside"><span class="label">Who</span></div>
     <div class="col-txt">
-      <h2>Three groups, curated one by one.</h2>
+      <h2>A curated set of individuals and the world's best experts in longevity.</h2>
       <div class="aud">
         <div class="row">
           <span class="bul">I</span>
           <div>
-            <h3>Sophisticated capital that writes cheques</h3>
+            <h3>Exclusive guest entry</h3>
             <p>Family office principals, HNW individuals and senior allocators, drawn from the database built through the SuperReturn and A4M programmes. People who put money where their mouth is.</p>
           </div>
         </div>
         <div class="row">
           <span class="bul">II</span>
           <div>
-            <h3>Dedicated longevity GPs and crossover investors</h3>
-            <p>The specialist core, meeting their future LPs and co-investors.</p>
+            <h3>World class longevity speakers</h3>
+            <p>Top geroscientists and biotech founders, hosted at the Aspen Club and treated impeccably.</p>
           </div>
         </div>
         <div class="row">
           <span class="bul">III</span>
           <div>
-            <h3>A world class speaker roster</h3>
-            <p>Top geroscientists and biotech founders, flown in and hosted at the 5 star venue, unpaid but treated impeccably. A US location makes this roster far easier to land than Europe.</p>
+            <h3>Dedicated longevity investors</h3>
+            <p>Specialist GPs and crossover investors, meeting their future LPs and co investors.</p>
           </div>
         </div>
       </div>
@@ -279,25 +293,25 @@
 
 <section class="body-sec">
   <div class="wrap">
-    <div class="aside"><span class="label">The format</span></div>
+    <div class="aside"><span class="label">Where</span></div>
     <div class="col-txt">
-      <h2>A full takeover of a 5 star mountain property.</h2>
-      <p>Small enough that every session is a conversation, and structured so the unstructured hours are the valuable ones.</p>
+      <h2>The Aspen Club. Aspen, Colorado, USA.</h2>
+      <p>The intimacy of a mountain getaway with world class hosting. One property, one group, 3 days.</p>
       <div class="day">
         <div class="slot">
           <span class="label">Mornings</span>
-          <h3>Firesides and masterclasses</h3>
-          <p>With the scientists and the specialist GPs, in a room small enough to ask a real question.</p>
+          <h3>Masterclasses, round tables and firesides</h3>
+          <p>Getting to know the guests, understanding the space, building the relationships.</p>
         </div>
         <div class="slot">
           <span class="label">Afternoons</span>
           <h3>One to ones and the mountain</h3>
-          <p>Curated meetings, skiing and hiking, and unstructured time where the real dealmaking happens.</p>
+          <p>Skiing, hiking, time outdoors, and the spa at the Aspen Club.</p>
         </div>
         <div class="slot">
           <span class="label">Evenings</span>
-          <h3>Hosted dinners</h3>
-          <p>Each with a sponsor host and a headline guest.</p>
+          <h3>Longevity dinners</h3>
+          <p>Headlined by a different speaker each night, hosted by a different sponsor.</p>
         </div>
       </div>
       <p class="pull">Invitation and application only.</p>
@@ -307,35 +321,36 @@
 
 <section class="commercial">
   <div class="wrap">
-    <div class="aside"><span class="label">Commercial model</span></div>
+    <div class="aside"><span class="label">The model</span></div>
     <div class="col-txt">
-      <h2>Profitable at Gstaad scale, and it grows from there.</h2>
+      <h2>An inaugural event that becomes an annual fixture.</h2>
+      <p class="intro">Always at the Aspen Club. The same circles year after year, each guest bringing the next.</p>
       <div class="streams">
         <div class="stream">
-          <h3>Premium tickets</h3>
+          <h3>Tickets</h3>
           <div>
-            <p>The key path. A US flagship with a stronger roster supports comparable or higher pricing, with an application step supporting willingness to pay.</p>
-            <span class="fig">Benchmark: 6,500 CHF, about 7,000 EUR</span>
+            <p>By application only.</p>
+            <span class="fig">$8,000 to $12,000 per guest</span>
           </div>
         </div>
         <div class="stream">
           <h3>Sponsorship</h3>
           <div>
-            <p>Wealth managers, private banks and longevity companies, each buying genuine presence in the room: dinner hosting, experience sponsorship, named sessions.</p>
-            <span class="fig">Around 5 partners, per the Gstaad benchmark</span>
+            <p>Sponsors who lead in longevity, each hosting a dinner and buying genuine access to the speakers, investors and guests in the room.</p>
+            <span class="fig">3 to 4 sponsors</span>
           </div>
         </div>
         <div class="stream">
           <h3>Membership</h3>
           <div>
-            <p>The event as the annual anchor of a members cohort, converting one off attendance into recurring community revenue over time.</p>
-            <span class="fig">Phase 2</span>
+            <p>A year on year approach to entry, converting one off attendance into a standing circle.</p>
+            <span class="fig">Phase 2, to be confirmed</span>
           </div>
         </div>
         <div class="stream">
           <h3>Cost base</h3>
           <div>
-            <p>Speaker travel and hotel, plus venue and hospitality. With 50 to 60 paid guests at premium pricing and 5 sponsors, the model is profitable at Gstaad scale.</p>
+            <p>Speaker travel and hotel, to be confirmed with the Aspen Club. Funded by paying guests and premium sponsors, and run to be profitable.</p>
           </div>
         </div>
       </div>
@@ -348,7 +363,7 @@
     <div class="reg-grid">
       <div>
         <h2>Register your interest.</h2>
-        <p class="reg-note">Attendance is by invitation and application. Tell us who you are and we will come back to you when dates and venue are confirmed.</p>
+        <p class="reg-note">Attendance is by invitation and application. Tell us who you are and why this is for you, and we will come back to you when dates are confirmed.</p>
       </div>
       <div>
         <form id="reg">
@@ -371,8 +386,12 @@
               <option>Fund manager or GP</option>
               <option>Institutional allocator</option>
               <option>Speaker or scientist</option>
-              <option>Prospective partner or sponsor</option>
+              <option>Prospective sponsor</option>
             </select>
+          </div>
+          <div class="field">
+            <label class="label" for="f-why">Why this is for you</label>
+            <textarea id="f-why" name="why" rows="3" maxlength="1500"></textarea>
           </div>
           <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
           <button type="submit" id="f-btn">Apply for an invitation</button>
@@ -385,8 +404,8 @@
 
 <footer>
   <div class="wrap">
+    <span class="label">Dates to be announced</span>
     <span class="label">The Forum &middot; Longevity Investors</span>
-    <span class="label">Dates and venue to be announced</span>
   </div>
 </footer>
 
@@ -403,6 +422,7 @@
         email: form.email.value.trim(),
         firm: form.firm.value.trim(),
         role: form.role.value,
+        why: form.why.value.trim(),
         website: form.website.value
       };
       if (!data.name || !data.email) return;

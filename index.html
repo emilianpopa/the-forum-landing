@@ -13,12 +13,13 @@
   :root{
     --paper:#FCFBF7;
     --paper-deep:#F3F1E8;
-    --ink:#1B1A16;
-    --ink-soft:#6B6A5F;
+    --ink:#27352D;
+    --ink-soft:#66736B;
     --rule:#DDD9CA;
-    --pine:#1F2E26;
-    --pine-mid:#33473C;
-    --pine-line:#4A6355;
+    --pine:#2E5040;
+    --pine-deep:#1F2E26;
+    --pine-mid:#3E6350;
+    --pine-line:#4E7560;
     --pine-ink:#EDEAE0;
     --pine-soft:#A9B4A8;
     --serif:"Cormorant Garamond", "Garamond", "Times New Roman", serif;
@@ -58,11 +59,11 @@
   .mast .label{white-space:nowrap}
 
   /* ---------- hero ---------- */
-  .hero{position:relative;overflow:hidden}
-  .hero .wrap{position:relative;padding-top:clamp(64px,11vw,132px);padding-bottom:clamp(40px,6vw,68px)}
+  .hero .wrap{padding-top:clamp(64px,11vw,132px);padding-bottom:clamp(40px,6vw,68px)}
+  .title{position:relative;display:block}
   .ridge{
-    position:absolute;left:0;right:0;top:0;
-    width:100%;height:auto;
+    position:absolute;left:-2%;right:-2%;top:0;bottom:0;
+    width:104%;height:100%;
     pointer-events:none;
     color:var(--pine-line);
   }
@@ -122,13 +123,13 @@
   .aside{padding-top:.9em}
 
   /* audience list */
-  .aud{display:grid;gap:26px;margin-top:30px}
+  .aud{display:grid;gap:18px;margin-top:30px}
   .aud .row{display:grid;grid-template-columns:1.6em 1fr;gap:14px;align-items:start}
   .aud .bul{color:var(--pine-line);font-size:22px;line-height:1.3}
-  .aud h3{font-weight:500;font-size:24px;line-height:1.3;margin:0 0 .2em;color:var(--pine)}
+  .aud h3{font-weight:500;font-size:26px;line-height:1.3;margin:0;color:var(--pine)}
 
   /* day shape */
-  .day{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(24px,4vw,40px);margin-top:36px}
+  .day{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(24px,4vw,40px);margin-top:16px}
   .day .slot{border-top:1px solid var(--pine-line);padding-top:14px}
   .day .slot h3{font-weight:500;font-size:23px;margin:.15em 0 .3em;color:var(--pine)}
   .day .slot p{font-size:18px;color:var(--ink-soft)}
@@ -144,7 +145,7 @@
   }
 
   /* ---------- the model (dark) ---------- */
-  .commercial{background:var(--pine);color:var(--pine-ink)}
+  .commercial{background:var(--pine-deep);color:var(--pine-ink)}
   .commercial .wrap{
     display:grid;
     grid-template-columns:190px minmax(0,1fr);
@@ -185,7 +186,7 @@
     background:var(--pine);color:var(--paper);border:0;padding:15px 26px;cursor:pointer;
     justify-self:start;margin-top:8px;transition:background .18s ease;
   }
-  button:hover{background:var(--pine-mid)}
+  button:hover{background:var(--pine-deep)}
   button:disabled{opacity:.5;cursor:default}
   button:focus-visible{outline:2px solid var(--pine-line);outline-offset:3px}
   .msg{font-size:17px;color:var(--ink-soft);min-height:1.4em}
@@ -220,19 +221,17 @@
 </header>
 
 <div class="hero">
-  <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-    <!-- distant ridge -->
-    <polyline fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".28" stroke-linejoin="round"
-      points="0,300 90,268 160,282 240,236 310,252 380,212 440,228 520,184 590,204 650,176 720,196 790,158 850,182 930,150 1000,170 1070,138 1140,162 1220,130 1290,150 1370,124 1440,140"/>
-    <!-- near ridge -->
-    <polyline fill="none" stroke="currentColor" stroke-width="1.25" stroke-opacity=".5" stroke-linejoin="round"
-      points="0,372 70,356 130,362 190,332 250,346 320,306 370,322 430,284 480,300 540,262 600,282 660,246 720,266 780,224 830,240 900,206 960,226 1020,196 1080,214 1150,184 1210,200 1270,172 1330,188 1390,166 1440,176"/>
-  </svg>
   <div class="wrap">
-    <h1>The Forum</h1>
+    <div class="title">
+      <svg class="ridge" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <polyline fill="none" stroke="currentColor" stroke-width="1.4" stroke-opacity=".55" stroke-linejoin="round" vector-effect="non-scaling-stroke"
+          points="0,88 60,70 110,80 170,42 210,58 260,18 300,46 340,30 390,72 440,50 480,12 520,40 560,26 610,66 650,48 700,8 740,36 780,22 830,62 880,44 930,74 970,58 1000,68"/>
+      </svg>
+      <h1>The Forum</h1>
+    </div>
     <div class="sub">Longevity Investors</div>
     <div class="lede">
-      <p><em>A standalone, ultra exclusive longevity investor forum at a 5 star destination in the Aspen mountains.</em></p>
+      <p><em>An ultra exclusive longevity investors forum at a 5 star destination in the Aspen mountains.</em></p>
       <p>Hosted at the Aspen Club. Small by design: this is the room where deals actually happen, not a conference with an audience.</p>
     </div>
   </div>
@@ -243,8 +242,8 @@
     <div class="fact"><span class="n">3</span><span class="label t">Days</span></div>
     <div class="fact"><span class="n">50&ndash;60</span><span class="label t">Paying guests</span></div>
     <div class="fact"><span class="n">30</span><span class="label t">Speakers</span></div>
+    <div class="fact"><span class="n">10</span><span class="label t">Longevity investors</span></div>
     <div class="fact"><span class="n">3</span><span class="label t">Exclusive sponsors</span></div>
-    <div class="fact"><span class="n">1</span><span class="label t">Hotel</span></div>
   </div>
 </div>
 
@@ -252,9 +251,8 @@
   <div class="wrap">
     <div class="aside"><span class="label">What</span></div>
     <div class="col-txt">
-      <h2>3 days at the best hotel in Aspen.</h2>
-      <p>50 to 60 paying guests and 30 speakers. Meals, sessions, activities and evenings are all part of the programme.</p>
-      <p>This is the summit that changes the game. We have seen the model work in Europe. Here it comes with a stronger roster and a better room: speakers, guests, investors and sponsors, the top of the top. This is the forum for longevity.</p>
+      <h2>The first of its kind longevity summit in Aspen, USA.</h2>
+      <p>This summit changes the game.</p>
     </div>
   </div>
 </section>
@@ -268,22 +266,19 @@
         <div class="row">
           <span class="bul">I</span>
           <div>
-            <h3>Exclusive guest entry</h3>
-            <p>Family office principals, HNW individuals and senior allocators, drawn from the database built through the SuperReturn and A4M programmes. People who put money where their mouth is.</p>
+            <h3>Exclusive guests</h3>
           </div>
         </div>
         <div class="row">
           <span class="bul">II</span>
           <div>
             <h3>World class longevity speakers</h3>
-            <p>Top geroscientists and biotech founders, hosted at the Aspen Club and treated impeccably.</p>
           </div>
         </div>
         <div class="row">
           <span class="bul">III</span>
           <div>
             <h3>Dedicated longevity investors</h3>
-            <p>Specialist GPs and crossover investors, meeting their future LPs and co investors.</p>
           </div>
         </div>
       </div>
@@ -295,23 +290,20 @@
   <div class="wrap">
     <div class="aside"><span class="label">Where</span></div>
     <div class="col-txt">
-      <h2>The Aspen Club. Aspen, Colorado, USA.</h2>
-      <p>The intimacy of a mountain getaway with world class hosting. One property, one group, 3 days.</p>
+      <h2>The Aspen Club. Aspen, Colorado.</h2>
       <div class="day">
         <div class="slot">
           <span class="label">Mornings</span>
           <h3>Masterclasses, round tables and firesides</h3>
-          <p>Getting to know the guests, understanding the space, building the relationships.</p>
         </div>
         <div class="slot">
           <span class="label">Afternoons</span>
-          <h3>One to ones and the mountain</h3>
-          <p>Skiing, hiking, time outdoors, and the spa at the Aspen Club.</p>
+          <h3>Deeper exploration</h3>
+          <p>Skiing, hiking and the mountains.<br>One to ones with experts in the space.</p>
         </div>
         <div class="slot">
           <span class="label">Evenings</span>
-          <h3>Longevity dinners</h3>
-          <p>Headlined by a different speaker each night, hosted by a different sponsor.</p>
+          <h3>Hosted dinners</h3>
         </div>
       </div>
       <p class="pull">Invitation and application only.</p>
